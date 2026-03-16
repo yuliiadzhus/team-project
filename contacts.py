@@ -1,18 +1,25 @@
-contacts = []
-
-def add_contact():
-    name = input("Введіть ім'я: ")
-    phone = input("Введіть номер: ")
-    contacts.append(f"{name}: {phone}")
-    print("Контакт додано!")
-
-def show_contacts():
-    print("\nВаші контакти:")
-    for c in contacts:
-        print(c)
+contacts = {}
 
 while True:
-    choice = input("\n1. Додати\n2. Показати\n3. Вихід\n> ")
-    if choice == "1": add_contact()
-    elif choice == "2": show_contacts()
-    elif choice == "3": break
+    print("1 - Додати контакт")
+    print("2 - Показати контакти")
+    print("3 - Видалити контакт")
+    print("4 - Вихід")
+
+    choice = input("Вибір: ")
+
+    if choice == "1":
+        name = input("Введіть ПІБ: ")
+        number = input("Введіть номер: ")
+        contacts[name] = number
+
+    elif choice == "2":
+        for name, number in contacts.items():
+            print(name, number)
+
+    elif choice == "3":
+        name = input("Кого видалити: ")
+        contacts.pop(name, None)
+
+    elif choice == "4":
+        break
